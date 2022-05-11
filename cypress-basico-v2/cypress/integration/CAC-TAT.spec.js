@@ -39,11 +39,22 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
       cy.get('.error').should('be.visible')
    })
-   it.only('campo telefone continua vazio quando preenchido com valor não-númerico', function(){
+   it('campo telefone continua vazio quando preenchido com valor não-númerico', function(){
       cy.get('#phone')
          .type('adsasdasawww')
          .should('have.value', '')
 
+   })
+   it.only('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function() {
+
+      cy.get('#firstName').type('CARLOS')
+      cy.get('#lastName').type('Tanaka')
+      cy.get('#email').type('tanaka@qa.com.br')
+      cy.get('#phone-checkbox').click()
+      cy.get('#open-text-area').type('Teste')
+      cy.get('button[type="submit"]').click()
+
+      cy.get('.error').should('be.visible')
    })
  })
 
