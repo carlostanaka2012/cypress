@@ -85,11 +85,17 @@ describe('Central de Atendimento ao Cliente TAT', function() {
          .should('have.value','')
    })
 
-   it.only('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigátorios', function() {
+   it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigátorios', function() {
 
       cy.get('button[type="submit"]').click()
 
       cy.get('.error').should('be.visible')
+
+   })
+   it.only('envia o formulário com sucesso usando um comando customizado',function(){
+      cy.fillMandatoryFieldsAndSubmit()
+
+      cy.get('.success').should('be.visible')
 
    })
 
