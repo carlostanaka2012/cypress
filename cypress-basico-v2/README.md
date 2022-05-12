@@ -27,3 +27,17 @@ Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
 ___
 
 Este é mais um curso da [**Escola Talking About Testing**](https://udemy.com/user/walmyr).
+
+
+Modo de execução
+
+headless
+npx cypress run test
+
+Open Page Normal
+npx cypress open
+
+Abre o cypress necessário selecionar o projeto 
+npm run cy:open
+
+
