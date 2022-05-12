@@ -1,9 +1,9 @@
 // CAC-TAT.spec.js created with Cypress
 //
 // Start writing your Cypress tests below!
-//// If you're unfamiliar with how Cypress works,
-//// check out the link below and learn how to write your first test:
-//// https://on.cypress.io/writing-first-test
+// If you're unfamiliar with how Cypress works,
+// check out the link below and learn how to write your first test:
+// https://on.cypress.io/writing-first-test
 
 /// <reference types="Cypress" />
 
@@ -133,13 +133,27 @@ describe('Central de Atendimento ao Cliente TAT', function() {
            cy.wrap($radio).should('be.checked')
         })
    })
-   it.only('marca ambos checkboxes, depois desmarca o último', function() {
+   it('marca ambos checkboxes, depois desmarca o último', function() {
       cy.get('input[type="checkbox"]')
       .check()
       .should('be.checked')
       .last()
       .uncheck()
       .should('not.be.checked')
+
+   })
+   it.only('seleciona um arquivo da pasta fixtures', function(){
+
+      //Identificando Ids Aula 29
+      ///cy.get('input[type="file"]#file-upload').click()
+
+      cy.get('input[type="file"]')
+         .should('not.have.value')
+         .selectFile('./cypress/fixtures/example.json')
+         .should(function($input){
+            console.log($input)
+            expect($input[0].files[0].name).to.equal('example.json')
+         })
 
    })
 
