@@ -105,14 +105,26 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
    it('seleciona um produto (Youtube) por seus texto', function(){
       cy.get('#product').select('YouTube')
-         .should('have.value', 'youtube')
+        .should('have.value', 'youtube')
    })
 
-   it.only('seleciona um produto (Mentoria) por seu valor (value)', function(){
+   it('seleciona um produto (Mentoria) por seu valor (value)', function(){
       cy.get('#product').select('mentoria')
-      .should('have.value', 'mentoria')
+        .should('have.value', 'mentoria')
+   })
+   it('seleciona um produto (Blog) pelo seu indice', function() {
+      cy.get('#product')
+        .select(1)
+        .should('have.value', 'blog')
+   })
+   it.only('marca o tipo de atendimento "Feedback"', function() {
+      cy.get('input[type="radio"][value="feedback"]')
+      .check()
+      .should('have.value','feedback')
+
+
+   
    })
 
-
- })
+})
 
