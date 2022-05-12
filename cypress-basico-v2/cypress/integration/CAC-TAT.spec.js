@@ -154,8 +154,19 @@ describe('Central de Atendimento ao Cliente TAT', function() {
             console.log($input)
             expect($input[0].files[0].name).to.equal('example.json')
          })
+      })
 
+   it.only('seleciona um arquivo simulando um drag-and-drop', function(){
+
+      //Identificando Ids Aula 29
+      ///cy.get('input[type="file"]#file-upload').click()
+      
+      cy.get('input[type="file"]')
+         .should('not.have.value')
+         .selectFile('./cypress/fixtures/example.json', { action: 'drag-drop'})
+         .should(function($input){
+            console.log($input)
+            expect($input[0].files[0].name).to.equal('example.json')
+      })
    })
-
 })
-
