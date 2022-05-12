@@ -142,7 +142,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
       .should('not.be.checked')
 
    })
-   it.only('seleciona um arquivo da pasta fixtures', function(){
+   it('seleciona um arquivo da pasta fixtures', function(){
 
       //Identificando Ids Aula 29
       ///cy.get('input[type="file"]#file-upload').click()
@@ -156,7 +156,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
          })
       })
 
-   it.only('seleciona um arquivo simulando um drag-and-drop', function(){
+   it('seleciona um arquivo simulando um drag-and-drop', function(){
 
       //Identificando Ids Aula 29
       ///cy.get('input[type="file"]#file-upload').click()
@@ -168,5 +168,15 @@ describe('Central de Atendimento ao Cliente TAT', function() {
             console.log($input)
             expect($input[0].files[0].name).to.equal('example.json')
       })
+   })
+
+   it('seleciona um arquivo utlizando uma fixture para qual foi dada um alias', function(){
+      cy.fixture('example.json').as('sampleFile')
+      cy.get('input[type="file"]')
+         .selectFile('@sampleFile')
+         .should(function($input){
+            console.log($input)
+            expect($input[0].files[0].name).to.equal('example.json')
+         })
    })
 })
