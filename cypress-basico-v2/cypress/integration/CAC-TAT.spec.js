@@ -5,7 +5,7 @@
 // check out the link below and learn how to write your first test:
 // https://on.cypress.io/writing-first-test
 
-/// <reference types="Cypress" />
+///// <reference types="Cypress" />
 
 describe('Central de Atendimento ao Cliente TAT', function() {
    beforeEach(function(){
@@ -36,7 +36,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
       cy.get('#lastName').type('qa')
       cy.get('#email').type('qa@qa,com.br')
       cy.get('#open-text-area').type('Teste')
-      //cy.get('button[type="submit"]').click()
+      ///cy.get('button[type="submit"]').click()
       cy.contains('button', 'Enviar').click()
 
       cy.get('.error').should('be.visible')
