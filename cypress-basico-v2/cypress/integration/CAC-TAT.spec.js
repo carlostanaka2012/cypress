@@ -32,9 +32,9 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
    })
    it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', function() {
-      cy.get('#firstName').type('CARLOS')
-      cy.get('#lastName').type('Tanaka')
-      cy.get('#email').type('tanaka@qa,com.br')
+      cy.get('#firstName').type('Teste')
+      cy.get('#lastName').type('qa')
+      cy.get('#email').type('qa@qa,com.br')
       cy.get('#open-text-area').type('Teste')
       //cy.get('button[type="submit"]').click()
       cy.contains('button', 'Enviar').click()
@@ -49,9 +49,9 @@ describe('Central de Atendimento ao Cliente TAT', function() {
    })
    it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function() {
 
-      cy.get('#firstName').type('CARLOS')
-      cy.get('#lastName').type('Tanaka')
-      cy.get('#email').type('tanaka@qa.com.br')
+      cy.get('#firstName').type('Teste')
+      cy.get('#lastName').type('qa')
+      cy.get('#email').type('qa@qa.com.br')
       cy.get('#phone-checkbox').click()
       cy.get('#open-text-area').type('Teste')
       //cy.get('button[type="submit"]').click()
@@ -68,7 +68,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
       cy.get('#lastName')
          .type('Tanaka')
-         .should('have.value','Tanaka')
+         .should('have.value','qa')
          .clear()
          .should('have.value','')
       cy.get('#email')
