@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@cypress/github-action": "^2.7.0"
-  }
-}
