@@ -12,8 +12,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '13.x'
-      - name: Install Dependencies
-        run: npm install
+    
       
       - name: Cypress run
         uses: cypress-io/github-action@v2
