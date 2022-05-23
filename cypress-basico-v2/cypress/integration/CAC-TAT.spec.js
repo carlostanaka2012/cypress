@@ -5,7 +5,7 @@
 // check out the link below and learn how to write your first test:
 // https://on.cypress.io/writing-first-test
 
-///// <reference types="Cypress" />
+/// <reference types="Cypress" />
 
 describe('Central de Atendimento ao Cliente TAT', function() {
    beforeEach(function(){
@@ -25,18 +25,18 @@ describe('Central de Atendimento ao Cliente TAT', function() {
       cy.get('#lastName').type('Tanaka')
       cy.get('#email').type('tanaka@qa.com.br')
       cy.get('#open-text-area').type(longText, { delay: 0})
-      ///cy.get('button[type="submit"]').click()
+      //cy.get('button[type="submit"]').click()
       cy.contains('button', 'Enviar').click()
 
       cy.get('.success').should('be.visible')
 
    })
    it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', function() {
-      cy.get('#firstName').type('Teste')
-      cy.get('#lastName').type('qa')
-      cy.get('#email').type('qa@qa,com.br')
+      cy.get('#firstName').type('CARLOS')
+      cy.get('#lastName').type('Tanaka')
+      cy.get('#email').type('tanaka@qa,com.br')
       cy.get('#open-text-area').type('Teste')
-      ///cy.get('button[type="submit"]').click()
+      //cy.get('button[type="submit"]').click()
       cy.contains('button', 'Enviar').click()
 
       cy.get('.error').should('be.visible')
@@ -49,12 +49,12 @@ describe('Central de Atendimento ao Cliente TAT', function() {
    })
    it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function() {
 
-      cy.get('#firstName').type('Teste')
-      cy.get('#lastName').type('qa')
-      cy.get('#email').type('qa@qa.com.br')
+      cy.get('#firstName').type('CARLOS')
+      cy.get('#lastName').type('Tanaka')
+      cy.get('#email').type('tanaka@qa.com.br')
       cy.get('#phone-checkbox').click()
       cy.get('#open-text-area').type('Teste')
-      ///cy.get('button[type="submit"]').click()
+      //cy.get('button[type="submit"]').click()
       cy.contains('button', 'Enviar').click()
 
       cy.get('.error').should('be.visible')
@@ -68,7 +68,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
       cy.get('#lastName')
          .type('Tanaka')
-         .should('have.value','qa')
+         .should('have.value','Tanaka')
          .clear()
          .should('have.value','')
       cy.get('#email')
@@ -90,7 +90,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
 
    it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigátorios', function() {
 
-      ///cy.get('button[type="submit"]').click()
+      //cy.get('button[type="submit"]').click()
       cy.contains('button', 'Enviar').click()
 
       cy.get('.error').should('be.visible')
@@ -145,7 +145,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
    it('seleciona um arquivo da pasta fixtures', function(){
 
       //Identificando Ids Aula 29
-      ////cy.get('input[type="file"]#file-upload').click()
+      ///cy.get('input[type="file"]#file-upload').click()
 
       cy.get('input[type="file"]')
          .should('not.have.value')
