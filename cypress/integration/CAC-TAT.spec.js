@@ -13,12 +13,16 @@ describe('Central de Atendimento ao Cliente TAT', function() {
       cy.visit('./src/index.html')
    })
 
+
    it('verifica o título da aplicação', function() {
       cy.title().should('be.equal','Central de Atendimento ao Cliente TAT')
  
    })
 
-   it('preenche os campos obrigatórios e envia formul´rio', function() {
+   Cypress._.times(3, function() {
+
+
+   it.only('preenche os campos obrigatórios e envia formulario - 3x', function() {
 
       const longText = 'Teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,'
 
@@ -42,6 +46,33 @@ describe('Central de Atendimento ao Cliente TAT', function() {
       cy.get('.success').should('not.be.visible')
 
    })
+   })
+
+   it.only('preenche os campos obrigatórios e envia formulario', function() {
+
+      const longText = 'Teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,'
+
+      cy.clock()
+
+      cy.get('#firstName').type('CARLOS')
+      cy.get('#lastName').type('Tanaka')
+      cy.get('#email').type('tanaka@qa.com.br')
+      cy.get('#open-text-area').type(longText, { delay: 0})
+      //cy.get('button[type="submit"]').click()
+      cy.contains('button', 'Enviar').click()
+
+      
+      cy.get('.success').should('be.visible')
+
+
+      ///Antes criar variavel cy.tick(3000)
+
+      cy.tick(THREE_SECONDS_IN_MS)
+
+      cy.get('.success').should('not.be.visible')
+
+   })
+
    it('exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', function() {
 
       cy.clock()
@@ -228,4 +259,6 @@ describe('Central de Atendimento ao Cliente TAT', function() {
       //.click()
       //cy.contains('Talking About Testing').should('be.visible')
    })
+
 })
+
