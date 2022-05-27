@@ -22,7 +22,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
    Cypress._.times(3, function() {
 
 
-   it.only('preenche os campos obrigatórios e envia formulario - 3x', function() {
+   it('preenche os campos obrigatórios e envia formulario - 3x', function() {
 
       const longText = 'Teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,'
 
@@ -48,7 +48,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
    })
    })
 
-   it.only('preenche os campos obrigatórios e envia formulario', function() {
+   it('preenche os campos obrigatórios e envia formulario', function() {
 
       const longText = 'Teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,teste,'
 
@@ -259,6 +259,24 @@ describe('Central de Atendimento ao Cliente TAT', function() {
       //.click()
       //cy.contains('Talking About Testing').should('be.visible')
    })
+   it.only('exibe e esconde as mensagens de sucesso e erro usando o .inovke', () =>{
+      cy.get('.success')
+         .should('not.be.visible')
+         .invoke('show')
+         .should('be.visible')
+         .and('contain', 'Mensagem enviada com sucesso.')
+         .invoke('hide')
+         .should('not.be.visible')
+      cy.get('.error')
+          .should('not.be.visible')
+         .invoke('show')
+         .should('be.visible')
+         .and('contain', 'Valide os campos obrigatórios!')
+         .invoke('hide')
+         .should('not.be.visible')
+   })
+
+
 
 })
 
