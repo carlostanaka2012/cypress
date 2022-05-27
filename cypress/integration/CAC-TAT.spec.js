@@ -259,7 +259,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
       //.click()
       //cy.contains('Talking About Testing').should('be.visible')
    })
-   it.only('exibe e esconde as mensagens de sucesso e erro usando o .inovke', () =>{
+   it('exibe e esconde as mensagens de sucesso e erro usando o .inovke', () =>{
       cy.get('.success')
          .should('not.be.visible')
          .invoke('show')
